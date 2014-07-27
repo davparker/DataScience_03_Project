@@ -64,7 +64,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <p>Coursera Data Science Specialization Track class 03 Course Project</p>
 <div id="objective" class="section level2">
 <h2>Objective:</h2>
-<p>To create a “Tidy” dataset from data published in an experiment using wearable smart devices. This is a “Data Science, Wearable Computing” experiment. The data from this experiment, titled “Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly Support Vector Machine” 1, is publicly avaible, [cited][id].</p>
+<p>To create a “Tidy” dataset from data published in an experiment using wearable smart devices. This is a “Data Science, Wearable Computing” experiment. The data from this experiment, titled “Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly Support Vector Machine” <a href="http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones" title="Human Activity Recognition Using Smartphones Data Set">1</a>, is publicly avaible, see citations.</p>
 </div>
 <div id="process" class="section level2">
 <h2>Process:</h2>
@@ -107,14 +107,24 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <p>Creates a second, independent tidy data set with the average of each variable for each <em>Activity</em> and each <em>Subject</em>.<br />Utilize function <em>ddply</em> from the <em>plyr</em> library. This function accomplishes 2 tasks.<br />1. This breaks down the tidy dataset <em>xMeanStdData</em> created above into a <strong>tidier</strong> dataset by <em>Subject.ID</em> and <em>Activity</em>.<br />2. Summarizes the 66 measured variables for standard deviation and means by way of an <em>anonymous function</em> taking the means for those variables.<br />The resultant new dataframe <strong>TidyDataSet</strong> is sorted by <em>Subject.ID</em> and <em>Activity</em>.</p>
 <p><code>{r}   TidyDataSet &lt;-ddply(xMeanStdData, c(&quot;Subject.ID&quot;,&quot;Activity&quot;),                       function(x) colMeans(x[c(colnames(xMeanStdData)[3:68])]))</code><br />Examine specifics for resulting <strong>Tidy</strong> dataset.<br /><code>{r}   dim(TidyDataSet)   # [1] 180  68</code><br /><code>{r}   head(TidyDataSet,12)</code></p>
 <p>Write <strong>TidyDataSet</strong> to <strong>TidyData.csv</strong> into the <em>working directory</em>.<br /><code>{r}   write.csv(TidyDataSet, file = &quot;TidyData.csv&quot;,row.names=FALSE)</code></p>
-<p>Retrieve the file info.<br /><code>{r}   file.info(&quot;TidyData.csv&quot;)</code> <em>TidyData.csv size is 224334</em></p>
+<p>Retrieve the file info.<br /><code>{r}   file.info(&quot;TidyData.csv&quot;)</code><br /><em>TidyData.csv size is 224334</em></p>
 <p>Write xMeanStdData to MeanStdData.csv into the working directory.<br /><code>{r}   write.csv(xMeanStdData, file = &quot;MeanStdData.csv&quot;,row.names=FALSE)</code></p>
-<div id="the-tidy-dataset-is-completed." class="section level3">
-<h3>The Tidy Dataset is completed.</h3>
+<div id="tidy-data-processing-is-complete." class="section level3">
+<h3>Tidy Data processing is complete.</h3>
 </div>
-<div id="the-filename-is-tidydata.csv-located-in-the-working-directory-of-the-script." class="section level3">
-<h3>The filename is <a href="https://github.com/davparker/DataScience_03_Project/blob/master/TidyData.csv"><strong>TidyData.csv</strong></a> located in the working directory of the script.</h3>
-<p><a href="http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones"><strong>Citations:</strong></a> [id]:&lt;1&gt; Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly Support Vector Machine. International Workshop of Ambient Assisted Living (IWAAL 2012). Vitoria-Gasteiz, Spain. Dec 2012</p>
+<div id="the-tidy-dataset-tidydata.csv-is-located-in-the-working-directory-of-the-script." class="section level3">
+<h3>The Tidy Dataset <strong>TidyData.csv</strong> is located in the working directory of the script.</h3>
+</div>
+<div id="the-file-can-be-retrieved-here-tidydata.csv" class="section level3">
+<h3>The file can be retrieved here: <a href="https://github.com/davparker/DataScience_03_Project/blob/master/TidyData.csv"><strong>TidyData.csv</strong></a></h3>
+</div>
+<div id="the-code-book-for-the-data-is-located-in-the-working-directory-of-the-script." class="section level3">
+<h3>The Code Book for the data is located in the working directory of the script.</h3>
+</div>
+<div id="the-file-can-be-accessed-here-codebook.rmd" class="section level3">
+<h3>The file can be accessed here: <a href="https://github.com/davparker/DataScience_03_Project/blob/master/codebook.Rmd"><strong>codebook.Rmd</strong></a></h3>
+<hr />
+<p><strong>Citations:</strong><br /><a href="http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones" title="Human Activity Recognition Using Smartphones Data Set">1</a> Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly Support Vector Machine. International Workshop of Ambient Assisted Living (IWAAL 2012). Vitoria-Gasteiz, Spain. Dec 2012</p>
 </div>
 </div>
 </div>

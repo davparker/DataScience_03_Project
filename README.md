@@ -11,7 +11,7 @@ output: html_document
 ---
   
 ## Objective:  
-To create a "Tidy" dataset from data published in an experiment using wearable smart devices. This is a "Data Science, Wearable Computing" experiment. The data from this experiment, titled "Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly Support Vector Machine" 1, is publicly avaible, [cited][id].
+To create a "Tidy" dataset from data published in an experiment using wearable smart devices. This is a "Data Science, Wearable Computing" experiment. The data from this experiment, titled "Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly Support Vector Machine" [1][id], is publicly avaible, see citations.  
   
 ## Process:  
 A single R script handes all the processing. It is located [here](https://github.com/davparker/DataScience_03_Project/blob/master/run_analysis.R). Script processing occurs in the following order.  
@@ -195,20 +195,26 @@ write.csv(TidyDataSet, file = "TidyData.csv",row.names=FALSE)
 Retrieve the file info.  
 ```{r}  
 file.info("TidyData.csv")  
-```
+```  
 _TidyData.csv size is 224334_  
   
 Write xMeanStdData to MeanStdData.csv  into the working directory.  
 ```{r}  
 write.csv(xMeanStdData, file = "MeanStdData.csv",row.names=FALSE)  
 ```  
-
-###The Tidy Dataset is completed.  
-###The filename is [__TidyData.csv__](https://github.com/davparker/DataScience_03_Project/blob/master/TidyData.csv) located in the working directory of the script.  
+  
+### Tidy Data processing is complete.    
+### The Tidy Dataset __TidyData.csv__ is located in the working directory of the script.  
+### The file can be retrieved here: [__TidyData.csv__](https://github.com/davparker/DataScience_03_Project/blob/master/TidyData.csv)  
+### The Code Book for the data is located in the working directory of the script.  
+### The file can be accessed here: [__codebook.Rmd__](https://github.com/davparker/DataScience_03_Project/blob/master/codebook.Rmd)  
   
   
   
   
+  - - -  
   
-[__Citations:__](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones)
-[id]:<1> Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly Support Vector Machine. International Workshop of Ambient Assisted Living (IWAAL 2012). Vitoria-Gasteiz, Spain. Dec 2012
+  
+[id]: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones "Human Activity Recognition Using Smartphones Data Set"  
+__Citations:__  
+[1][id] Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly Support Vector Machine. International Workshop of Ambient Assisted Living (IWAAL 2012). Vitoria-Gasteiz, Spain. Dec 2012
