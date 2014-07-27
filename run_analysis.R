@@ -32,6 +32,7 @@
 
 
 # Preliminary activities, acquiring the data, reading it into data frames
+# Step 5 utilizes ddply in the plyr library
 require(plyr)
 
 # Assumes the working directory is set to project directory!
@@ -185,16 +186,17 @@ dim(TidyDataSet)
 
 head(TidyDataSet,12)
 
-# write TidyDataSet to TidyData.csv into the working directory
-write.csv(TidyDataSet, file = "TidyData.csv",row.names=FALSE)
+# write TidyDataSet to TidyData.txt into the working directory
+write.table(TidyDataSet, file = "TidyData.txt", sep = ",", eol = "\r", row.names = FALSE, col.names = TRUE)
 
-file.info("TidyData.csv")
-# TidyData.csv size 224334 
+file.info("TidyData.txt")
+# TidyData.txt size 224153
 
-# write xMeanStdData to MeanStdData.csv  into the working directory
-write.csv(xMeanStdData, file = "MeanStdData.csv",row.names=FALSE)
+# write xMeanStdData to MeanStdData.txt  into the working directory
+write.table(xMeanStdData, file = "MeanStdData.txt", sep = ",", eol = "\r", row.names = FALSE, col.names = TRUE)
+
 
 # The Tidy Dataset is completed.  
-# The filename is TidyData.csv @ https://github.com/davparker/DataScience_03_Project/blob/master/TidyData.csv).
+# The filename is TidyData.txt @ https://github.com/davparker/DataScience_03_Project/blob/master/TidyData.txt).
 # Located in the working directory of the script.  
 

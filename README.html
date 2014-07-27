@@ -106,17 +106,18 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <h2>Step 5</h2>
 <p>Creates a second, independent tidy data set with the average of each variable for each <em>Activity</em> and each <em>Subject</em>.<br />Utilize function <em>ddply</em> from the <em>plyr</em> library. This function accomplishes 2 tasks.<br />1. This breaks down the tidy dataset <em>xMeanStdData</em> created above into a <strong>tidier</strong> dataset by <em>Subject.ID</em> and <em>Activity</em>.<br />2. Summarizes the 66 measured variables for standard deviation and means by way of an <em>anonymous function</em> taking the means for those variables.<br />The resultant new dataframe <strong>TidyDataSet</strong> is sorted by <em>Subject.ID</em> and <em>Activity</em>.</p>
 <p><code>{r}   TidyDataSet &lt;-ddply(xMeanStdData, c(&quot;Subject.ID&quot;,&quot;Activity&quot;),                       function(x) colMeans(x[c(colnames(xMeanStdData)[3:68])]))</code><br />Examine specifics for resulting <strong>Tidy</strong> dataset.<br /><code>{r}   dim(TidyDataSet)   # [1] 180  68</code><br /><code>{r}   head(TidyDataSet,12)</code></p>
-<p>Write <strong>TidyDataSet</strong> to <strong>TidyData.csv</strong> into the <em>working directory</em>.<br /><code>{r}   write.csv(TidyDataSet, file = &quot;TidyData.csv&quot;,row.names=FALSE)</code></p>
-<p>Retrieve the file info.<br /><code>{r}   file.info(&quot;TidyData.csv&quot;)</code><br /><em>TidyData.csv size is 224334</em></p>
-<p>Write xMeanStdData to MeanStdData.csv into the working directory.<br /><code>{r}   write.csv(xMeanStdData, file = &quot;MeanStdData.csv&quot;,row.names=FALSE)</code></p>
+<p>Write <strong>TidyDataSet</strong> to <strong>TidyData.txt</strong> into the <em>working directory</em>.<br /><code>{r}   write.table(TidyDataSet, file = &quot;TidyData.txt&quot;, sep = &quot;,&quot;, eol = &quot;\r&quot;, row.names = FALSE, col.names = TRUE)</code></p>
+<p>Retrieve the file info.<br /><code>{r}   file.info(&quot;TidyData.txt&quot;)</code><br /><em>TidyData.txt size is 224153</em></p>
+<p>write xMeanStdData to MeanStdData.txt into the working directory <code>{r} write.table(xMeanStdData, file = &quot;MeanStdData.txt&quot;, sep = &quot;,&quot;, eol = &quot;\r&quot;, row.names = FALSE, col.names = TRUE)</code></p>
+<hr />
 <div id="tidy-data-processing-is-complete." class="section level3">
 <h3>Tidy Data processing is complete.</h3>
 </div>
-<div id="the-tidy-dataset-tidydata.csv-is-located-in-the-working-directory-of-the-script." class="section level3">
-<h3>The Tidy Dataset <strong>TidyData.csv</strong> is located in the working directory of the script.</h3>
+<div id="the-tidy-dataset-tidydata.txt-is-located-in-the-working-directory-of-the-script." class="section level3">
+<h3>The Tidy Dataset <strong>TidyData.txt</strong> is located in the working directory of the script.</h3>
 </div>
-<div id="the-file-can-be-retrieved-here-tidydata.csv" class="section level3">
-<h3>The file can be retrieved here: <a href="https://github.com/davparker/DataScience_03_Project/blob/master/TidyData.csv"><strong>TidyData.csv</strong></a></h3>
+<div id="the-file-can-be-retrieved-here-tidydata.txt" class="section level3">
+<h3>The file can be retrieved here: <a href="https://github.com/davparker/DataScience_03_Project/blob/master/TidyData.txt"><strong>TidyData.txt</strong></a></h3>
 </div>
 <div id="the-code-book-for-the-data-is-located-in-the-working-directory-of-the-script." class="section level3">
 <h3>The Code Book for the data is located in the working directory of the script.</h3>
