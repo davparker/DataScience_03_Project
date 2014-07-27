@@ -11,7 +11,7 @@ output: html_document
 ---
   
 ## Objective:  
-To create a "Tidy" dataset from data published in an experiment using wearable smart devices. This is a "Data Science, Wearable Computing" experiment. The data from this experiment, titled ["Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly Support Vector Machine" *1][id], is publicly avaible, cited below in this document.  
+To create a "Tidy" dataset from data published in an experiment using wearable smart devices. This is a "Data Science, Wearable Computing" experiment. The data from this experiment, titled "Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly Support Vector Machine" 1, is publicly avaible, [cited][id].
   
 ## Process:  
 A single R script handes all the processing. It is located [here](https://github.com/davparker/DataScience_03_Project/blob/master/run_analysis.R). Script processing occurs in the following order.  
@@ -211,5 +211,4 @@ write.csv(xMeanStdData, file = "MeanStdData.csv",row.names=FALSE)
   
   
 [__Citations:__](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones)
-[id][_1_](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones)1
-Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly Support Vector Machine. International Workshop of Ambient Assisted Living (IWAAL 2012). Vitoria-Gasteiz, Spain. Dec 2012
+[id]:<1> Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly Support Vector Machine. International Workshop of Ambient Assisted Living (IWAAL 2012). Vitoria-Gasteiz, Spain. Dec 2012
