@@ -60,6 +60,7 @@ yTestData    <- read.table(yTestFile, header = FALSE, colClasses = "character")
 TestSubject  <- read.table(sTestFile, header = FALSE, colClasses = "character")
 
 # Verify test data row counts
+nrow(xTestData)  # ecpect [1] 2947
 identical(nrow(xTestData), nrow(yTestData))
 identical(nrow(xTestData), nrow(TestSubject))
 
@@ -141,7 +142,7 @@ colnames(xMeanStdData)
 head(xMeanStdData[, c(1, 2, 3, 4, 5, 6, 66, 67, 68, 69)])
 tail(xMeanStdData[, c(1, 2, 3, 4, 5, 6, 66, 67, 68, 69)])
 
-# we no longer need V1.1 as we merged in its corresponding activity
+# We no longer need V1.1 as the textual data was merged with its corresponding activity.  
 xMeanStdData$V1.1 <- NULL
 ncol(xMeanStdData)  # expect 68 - we basically replaced Activity number with its name
 
@@ -151,8 +152,9 @@ ncol(xMeanStdData)  # expect 68 - we basically replaced Activity number with its
 
 # All but the last 2 column labels have descriptive names read in during read.table on xDataFiles
 # Refer to xActivityLabels
-colnames(xMeanStdData)
-# we only need to rename the remaining Subject and Activity labels
+colnames(xMeanStdData)  # review column names
+
+# Rename the generic V & V2 to appropriate Subject and Activity labels.  
 colnames(xMeanStdData)[67] <- "Subject.ID"
 colnames(xMeanStdData)[68] <- "Activity"
 
