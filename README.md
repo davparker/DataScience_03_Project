@@ -187,30 +187,32 @@ dim(TidyDataSet)
 head(TidyDataSet,12)  
 ```  
   
-Write __TidyDataSet__ to __TidyData.csv__ into the _working directory_.  
+Write __TidyDataSet__ to __TidyData.txt__ into the _working directory_.  
 ```{r}  
-write.csv(TidyDataSet, file = "TidyData.csv",row.names=FALSE)  
+write.table(TidyDataSet, file = "TidyData.txt", sep = ",", eol = "\r", row.names = FALSE, col.names = TRUE)  
 ```  
   
 Retrieve the file info.  
 ```{r}  
-file.info("TidyData.csv")  
+file.info("TidyData.txt")  
 ```  
-_TidyData.csv size is 224334_  
+_TidyData.txt size is 224153_  
+
   
-Write xMeanStdData to MeanStdData.csv  into the working directory.  
-```{r}  
-write.csv(xMeanStdData, file = "MeanStdData.csv",row.names=FALSE)  
+write xMeanStdData to MeanStdData.txt  into the working directory
+```{r}
+write.table(xMeanStdData, file = "MeanStdData.txt", sep = ",", eol = "\r", row.names = FALSE, col.names = TRUE)  
 ```  
+  
+  - - -  
+  
   
 ### Tidy Data processing is complete.    
-### The Tidy Dataset __TidyData.csv__ is located in the working directory of the script.  
-### The file can be retrieved here: [__TidyData.csv__](https://github.com/davparker/DataScience_03_Project/blob/master/TidyData.csv)  
+### The Tidy Dataset __TidyData.txt__ is located in the working directory of the script.  
+### The file can be retrieved here: [__TidyData.txt__](https://github.com/davparker/DataScience_03_Project/blob/master/TidyData.txt)  
 ### The Code Book for the data is located in the working directory of the script.  
 ### The file can be accessed here: [__codebook.Rmd__](https://github.com/davparker/DataScience_03_Project/blob/master/codebook.Rmd)  
-  
-  
-  
+    
   
   - - -  
   
