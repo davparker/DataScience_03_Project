@@ -2,23 +2,27 @@ DataScience_03_Project
 ======================  
   
 Coursera Data Science Specialization Track class 03 Course Project  
+  
 ---
 title: "Coursera Project Tidy Data"
 author: "David Parker"
 date: "Sunday, July 27, 2014"
 output: html_document
 ---
-
-### Objective:
-To create a "Tidy" dataset from data published in an experiment using wearable smart devices. This is a "Data Science, Wearable Computing" experiment. The data from this experiment, titled "Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly Support Vector Machine" [1], is publicly avaible, cited below in this document.
-
-### Process:
-A single R script handes all the processing. It is located [here](https://github.com/davparker/DataScience_03_Project/blob/master/run_analysis.R).  
   
-In preperation to aquire "Human Activity Recognition Using Smartphones Data Set", the script first checks to see if a copy is present in the working directory. If not it downloads it from:  
+## Objective:  
+To create a "Tidy" dataset from data published in an experiment using wearable smart devices. This is a "Data Science, Wearable Computing" experiment. The data from this experiment, titled ["Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly Support Vector Machine" *1][id], is publicly avaible, cited below in this document.  
+  
+## Process:  
+A single R script handes all the processing. It is located [here](https://github.com/davparker/DataScience_03_Project/blob/master/run_analysis.R). Script processing occurs in the following order.  
+  
+### Housekeeping:  
+In preperation to aquire "Human Activity Recognition Using Smartphones Data Set", the script first checks to see __if__ a copy is present in the working directory. If __not__ it downloads it from:  
 [https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip)  
+The script then unzips the data into the working directory.  
   
-The script then unzips the data into the working directory. Next, the script reads in the datasets in the following order:  
+### Intial Data Loading: 
+Next, the script reads in the datasets in the following order:  
 First gathers data common to both test and train:  
 + Read *actvity_labels.txt* into, dataframe: __xActivityLabels__  
 + Read *features.txt* labels into, dataframe: __xColNames__ (these are column names common to Train & Test)  
@@ -33,7 +37,7 @@ Next collects data for train subjects:
   
 Now the steps for processing the data begins:    
   
-###Step 1  
+##Step 1  
 __Merges the training and the test sets to create one data set__.    
 Both the Test and Train datasets should contain the same number of rows.  
 Verify test data row counts.  
@@ -75,7 +79,7 @@ Verify the rowcount of Merged Data equal the sum of Test + Train.
 identical(nrow(xMergeData), (nrow(xTestData) + nrow(xTrainData) ) )  # expect TRUE  
 ```  
   
-###Step 2  
+##Step 2  
 Extracts only the measurements on the mean and standard deviation for each measurement.  
   
 Gets all column _indicies_ for standard deviation, mean, generic _V1_ _V1.1_ added by Subject & yData.  
@@ -115,7 +119,7 @@ head(xMeanStdData[, c(1, 2, 3, 4, 5, 6, 66, 67, 68)])
 tail(xMeanStdData[, c(1, 2, 3, 4, 5, 6, 66, 67, 68)])  
 ```  
   
-###Step 3  
+##Step 3  
 Use descriptive activity names to name the activities in the data set.  
 ```{r}  
 colnames(xActivityLabels)  # review Activity Labels column names for merging  
@@ -138,7 +142,7 @@ xMeanStdData$V1.1 <- NULL
 ncol(xMeanStdData)  # expect 68 - we basically replaced Activity number with its name  
 ```  
   
-###Step 4  
+##Step 4  
 Appropriately labels the data set with descriptive variable names.  
   
 All but the last 2 column labels have descriptive names read in during _read.table_ on _xDataFiles_.  
@@ -163,7 +167,7 @@ xMeanStdData <- xMeanStdData[,c(67,68,1:66)]
 colnames(xMeanStdData)  # observe new column arrangement  
 ``` 
   
-###Step 5  
+##Step 5  
 Creates a second, independent tidy data set with the average of each variable for each _Activity_ and each _Subject_.  
 Utilize function _ddply_ from the _plyr_ library. This function accomplishes 2 tasks.  
 1. This breaks down the tidy dataset _xMeanStdData_ created above into a __tidier__ dataset by _Subject.ID_ and _Activity_.  
@@ -206,6 +210,6 @@ write.csv(xMeanStdData, file = "MeanStdData.csv",row.names=FALSE)
   
   
   
-  
-[1] Davide Anguita, Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly Support Vector Machine. International Workshop of Ambient Assisted Living (IWAAL 2012). Vitoria-Gasteiz, Spain. Dec 2012
-[__Citation__](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones)
+[__Citations:__](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones)
+[id][_1_](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones)1
+Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly Support Vector Machine. International Workshop of Ambient Assisted Living (IWAAL 2012). Vitoria-Gasteiz, Spain. Dec 2012
