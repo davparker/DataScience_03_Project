@@ -32,7 +32,7 @@
 
 
 # Preliminary activities, acquiring the data, reading it into data frames
-library(plyr)
+require(plyr)
 
 # Assumes the working directory is set to project directory!
 # Aquire "Human Activity Recognition Using Smartphones Data Set"
@@ -59,11 +59,6 @@ xTestData    <- read.table(xTestFile, header = FALSE, col.names = xColNames$V2, 
 yTestData    <- read.table(yTestFile, header = FALSE, colClasses = "character")
 TestSubject  <- read.table(sTestFile, header = FALSE, colClasses = "character")
 
-# Verify test data row counts
-nrow(xTestData)  # ecpect [1] 2947
-identical(nrow(xTestData), nrow(yTestData))
-identical(nrow(xTestData), nrow(TestSubject))
-
 # Read in train data
 xTrainFile    <- "./UCI HAR Dataset/train/x_train.txt"
 yTrainFile    <- "./UCI HAR Dataset/train/y_train.txt"
@@ -73,19 +68,24 @@ xTrainData    <- read.table(xTrainFile, header = FALSE, col.names = xColNames$V2
 yTrainData    <- read.table(yTrainFile, header = FALSE, colClasses = "character")
 TrainSubject  <- read.table(sTrainFile, header = FALSE, colClasses = "character")
 
-# Verify train data row counts
-identical(nrow(xTrainData), nrow(yTrainData))    # expect TRUE
-identical(nrow(xTrainData), nrow(TrainSubject))  # expect TRUE
-
 
 # Step 1
 # Merges the training and the test sets to create one data set. 
+# Verify test data row counts
+nrow(xTestData)  # ecpect 2947
+identical(nrow(xTestData), nrow(yTestData))  # expect TRUE
+identical(nrow(xTestData), nrow(TestSubject))  # expect TRUE
 
-# Create one test data frame
+# Create one test data frame binding by columns
 xTestData <- cbind(xTestData, TestSubject)
 xTestData <- cbind(xTestData, yTestData)
 
-# Create on train data frame
+# Verify train data row counts
+nrow(xTrainData)  # expect 7352
+identical(nrow(xTrainData), nrow(yTrainData))    # expect TRUE
+identical(nrow(xTrainData), nrow(TrainSubject))  # expect TRUE
+
+# Create on train data frame binding by columns
 xTrainData <- cbind(xTrainData, TrainSubject)
 xTrainData <- cbind(xTrainData, yTrainData)
 
@@ -122,7 +122,7 @@ colDrop <- cnames[xMeanFreqCol]  # returns a vector with names to be dropped
 xMeanStdData <- xMeanStdData[, !(colnames(xMeanStdData) %in% colDrop)]  
 
 # Verifying tidier dataset
-ncol(xMeanStdData)  # expect 68 good columns
+ncol(xMeanStdData)  # expect 68
 nrow(xMeanStdData)  # expect 10299
 colnames(xMeanStdData)
 # Examine sample data head & tail | first & last columns
@@ -169,11 +169,17 @@ colnames(xMeanStdData)
 
 
 # Step 5
-# Creates a second, independent tidy data set with the average of each variable for each
-# activity and each subject.
+
+# Creates a second, independent tidy data set with the average of each variable.
+# Utilize function ddply from the plyr library. This function accomplishes 2 tasks.  
+# 1. This breaks down the tidy dataset xMeanStdData created above into a tidier
+#    dataset by Subject.ID and Activity.
+# 2. Summarizes the 66 measured variables for standard deviation and means by
+#    way of an anonymous function taking the means for those variables.
+# The resultant new dataframe TidyDataSet is sorted by Subject.ID and Activity.  
 TidyDataSet <-ddply(xMeanStdData, c("Subject.ID","Activity"), 
                     function(x) colMeans(x[c(colnames(xMeanStdData)[3:68])]))
-
+#
 dim(TidyDataSet)  
 # [1] 180  68
 
@@ -183,9 +189,12 @@ head(TidyDataSet,12)
 write.csv(TidyDataSet, file = "TidyData.csv",row.names=FALSE)
 
 file.info("TidyData.csv")
-#                size isdir mode               mtime               ctime               atime exe
-# TidyData.csv 224334 FALSE  666 2014-07-27 09:01:12 2014-07-27 08:34:58 2014-07-27 08:34:58  no
+# TidyData.csv size 224334 
 
 # write xMeanStdData to MeanStdData.csv  into the working directory
 write.csv(xMeanStdData, file = "MeanStdData.csv",row.names=FALSE)
+
+# The Tidy Dataset is completed.  
+# The filename is TidyData.csv @ https://github.com/davparker/DataScience_03_Project/blob/master/TidyData.csv).
+# Located in the working directory of the script.  
 

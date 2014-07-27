@@ -1,3 +1,7 @@
+DataScience_03_Project
+======================  
+  
+Coursera Data Science Specialization Track class 03 Course Project  
 ---
 title: "Coursera Project Tidy Data"
 author: "David Parker"
@@ -29,9 +33,15 @@ Next collects data for train subjects:
   
 Now the steps for processing the data begins:    
   
-###Step 1
-__Merges the training and the test sets to create one data set. __  
-Both the Test and Train datasets contain the same number of columns.  
+###Step 1  
+__Merges the training and the test sets to create one data set__.    
+Both the Test and Train datasets should contain the same number of rows.  
+Verify test data row counts.  
+```{r}  
+nrow(xTestData)  # ecpect 2947  
+identical(nrow(xTestData), nrow(yTestData))  # expect TRUE  
+identical(nrow(xTestData), nrow(TestSubject))  # expect TRUE  
+```  
   
 The 3 tables in test have the same number of rows, _2947_.  
 Create one test data frame combining columns from xTestData, TestSubject, yTestData.  
@@ -39,19 +49,22 @@ Create one test data frame combining columns from xTestData, TestSubject, yTestD
 xTestData <- cbind(xTestData, TestSubject)   
 xTestData <- cbind(xTestData, yTestData)   
 ```  
-  
+Verify train data row counts  
+```{r}  
+nrow(xTrainData)  # expect 7352  
+identical(nrow(xTrainData), nrow(yTrainData))    # expect TRUE  
+identical(nrow(xTrainData), nrow(TrainSubject))  # expect TRUE  
+```  
 The 3 tables in train have the same number of rows, _7352_.  
-Create on train data frame combining xTrainData, TrainSubject, yTrainData,  
+Create one train data frame combining xTrainData, TrainSubject, yTrainData,  
 ```{r}  
 xTrainData <- cbind(xTrainData, TrainSubject)  
 xTrainData <- cbind(xTrainData, yTrainData)  
 ```  
-  
 Verify colnames prior to merging.  
 ```{r}  
 identical(colnames(xTestData), colnames(xTrainData))  # expect TRUE  
 ```  
-  
 Merge all the data into one data frame.  
 ```{r}  
 xMergeData <- rbind(xTrainData, xTestData)  
@@ -92,7 +105,7 @@ xMeanStdData <- xMeanStdData[, !(colnames(xMeanStdData) %in% colDrop)]
 ```  
 Verifying tidier dataset.  
 ```{r}  
-ncol(xMeanStdData)  # expect 68 good columns  
+ncol(xMeanStdData)  # expect 68 columns  
 nrow(xMeanStdData)  # expect 10299  
 colnames(xMeanStdData)  
 ```  
@@ -189,10 +202,10 @@ write.csv(xMeanStdData, file = "MeanStdData.csv",row.names=FALSE)
 ###The Tidy Dataset is completed.  
 ###The filename is [__TidyData.csv__](https://github.com/davparker/DataScience_03_Project/blob/master/TidyData.csv) located in the working directory of the script.  
   
-    
-    
-
-
-_Citations:_  
+  
+  
+  
+  
+  
 [1] Davide Anguita, Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly Support Vector Machine. International Workshop of Ambient Assisted Living (IWAAL 2012). Vitoria-Gasteiz, Spain. Dec 2012
-[Citation](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones)
+[__Citation__](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones)
