@@ -6,7 +6,7 @@ date: "Sunday, July 27, 2014"
 ```        
 codebook geerated for data imported "Data Science, Wearable Computing" experiment. The data from this experimenttitled "Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly Support Vector Machine"
 
-Merged data from raw daa files features.txt, activity_labels.txt, features_info.txt
+Merged data from raw data files features.txt, activity_labels.txt, features_info.txt
 Description from features_info.txt:
 ```         
 Feature Selection 
@@ -23,12 +23,26 @@ Also the magnitude of these three-dimensional signals were calculated using the 
 Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag. (Note the 'f' to indicate frequency domain signals). 
 
 These signals were used to estimate variables of the feature vector for each pattern:  
-'-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
+'-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.  
+
+==============================================================================================    
+Fields from raw data import, activity_labels.txt:                                                       
+==============================================================================================    
+
+```         
+-----------------------      
+N|Activity            |      
+-----------------------      
+1 WALKING
+2 WALKING_UPSTAIRS
+3 WALKING_DOWNSTAIRS
+4 SITTING
+5 STANDING
+6 LAYING
+```      
 ==============================================================================================    
 Fields from raw data import, features.txt:                                                       
 ==============================================================================================    
-Begin import field data: [features.txt:]                                                           
-==============================================================================================      
 ```         
 -------------------------------------------|-------------------------------------------
 N| field.name                              | field.description                        |
@@ -1172,7 +1186,7 @@ str(xMergeData, list.len = 9999)
 ```              
 ==============================================================================================         
 | Results of the first Tidy data.frame.                                  
-| Data extracted for the vaariables containing stand deviation and means.                                           
+| Data extracted for the variables containing stand deviation and means.                                           
 ==============================================================================================         
 | data.frame: xMeanStdData                                                           
 ==============================================================================================         
